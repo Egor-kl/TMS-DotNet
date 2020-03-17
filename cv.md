@@ -3,4 +3,4 @@ Summary: My name is Egor, i'm from Soligorsk. Before the courses, I graduated fr
 Skills: Minimal knowledge in python and java  ;
 Education: Student of TUSUR ;
 English: Pre - intermediate / Intermediate ;
-TMS course goal: I want to get knowledge in programming on .net technology and meet with new people
+TMS course goal: I want to get knowledge in programming on .net technology and meet with new people.
