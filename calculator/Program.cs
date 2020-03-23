@@ -4,55 +4,49 @@ namespace calculator
 {
     class Program
     {
-
+        static string result;
         static void Main(string[] args)
         {
-            double numberOne;
-            double numberTwo;
-            string name;
-            string operation;
             Console.WriteLine("Hello, what is your name?");
-            name = Console.ReadLine();
-            Console.WriteLine("Hello, "+name+" ,it's my calculator");
-            Console.WriteLine("Choose your operation: +, -, /, * : ");
-            operation = Console.ReadLine();
+            string name = Console.ReadLine();
+            Console.WriteLine("Hello, " + name + " ,it's my calculator");
+            Operation();
+        }
+        public static void Operation()
+        {
+            Console.WriteLine("Please, enter your first number: ");
+            double numberOne = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Please, enter your second number: ");
+            double numberTwo = Convert.ToDouble(Console.ReadLine());
+
+            Console.WriteLine("Select your operations: '+', '-', '/', '*' ");
+            string operation = Console.ReadLine();
+
             switch (operation)
             {
                 case "+":
-                    Console.WriteLine("Choose your first number: ");
-                    numberOne = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Choose your first number: ");
-                    numberTwo = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine(numberOne + numberTwo);
+                    result = Convert.ToString(Summ(numberOne, numberTwo));
                     break;
-
                 case "-":
-                    Console.WriteLine("Choose your first number: ");
-                    numberOne = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Choose your first number: ");
-                    numberTwo = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine(numberOne - numberTwo);
+                    result = Convert.ToString(Difference(numberOne, numberTwo));
                     break;
                 case "/":
-                    Console.WriteLine("Choose your first number: ");
-                    numberOne = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Choose your first number: ");
-                    numberTwo = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine(numberOne + numberTwo);
+                    result = Convert.ToString(Division(numberOne, numberTwo));
                     break;
                 case "*":
-                    Console.WriteLine("Choose your first number: ");
-                    numberOne = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine("Choose your first number: ");
-                    numberTwo = Convert.ToDouble(Console.ReadLine());
-                    Console.WriteLine(numberOne * numberTwo);
+                    result = Convert.ToString(Product(numberOne, numberTwo));
                     break;
-                default:
-                    Console.WriteLine("Something was entered incorrectly");
-                    break;
-
             }
-            Console.WriteLine("Thank you for using!");
+            Console.WriteLine("Result: "+ result);
         }
+        static double Summ(double numberOne, double numberTwo) => numberOne + numberTwo;
+        static double Difference(double numberOne, double numberTwo) => numberOne - numberTwo;
+        static double Division(double numberOne, double numberTwo)
+        {
+            if (numberTwo == 0)
+               Console.WriteLine("Division on zero");
+            return numberOne / numberTwo;
+        }
+        static double Product(double numberOne, double numberTwo) => numberOne * numberTwo;
     }
 }
