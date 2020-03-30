@@ -15,107 +15,156 @@ namespace WeekOrganizer
         enum daysOfWeek{ Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6, Sunday = 7 }
         static void Main(string[] args)
         {
-            Console.WriteLine("Write 'W' to continue, if you need some help write 'H' ");
+            Console.ForegroundColor = ConsoleColor.Green; //Neo Matrix
+            DateTime Time = DateTime.Now;
+            Console.WriteLine("Write 'W' to continue \nIf you need some help write 'H' ");
             string userInput = Console.ReadLine();
             if (userInput == "W" || userInput == "w")
             {           
-                checkInput();
+                checkInput(Time);
             }
             else if (userInput == "h" || userInput == "H")
             {
                 Help();
-            }
+            }          
             else
             {
                 Console.WriteLine("WHY YOU WRITE THIS????? I SAY YOU WRITE 'W' OR 'H'!"); //lul
                 Environment.Exit(0);
             }
         }
+        /// <summary>
+        /// Хелпер для юзера
+        /// </summary>
         public static void Help()
         {
             Console.WriteLine("Okay, it's little tutorial.");
             Console.WriteLine("You need to choose one of the 7 days of the week, write in full (For example 'Monday' or 'mon' or '1', 'Tuesday' or 'Tus' or '2', etc.) ");
             Console.WriteLine("This application works easily, you choose a day and write down your tasks for that day, so you can schedule all for a whole week, after each recording you will be asked to double-check what you wrote");
         }
-        
-        public static string checkInput()
+        /// <summary>
+        /// Выбор между "Занести в список" и "Проверить список"
+        /// </summary>
+        /// <param name="Time"></param>
+        /// <returns></returns>
+        public static string checkInput(DateTime Time)
         {
             
             Console.WriteLine("Okay, if you need see what you write press 'L',\nif you need continue program press 'W' ");
             string userInput2 = Console.ReadLine();
-            if (userInput2 == "W" || userInput2 == "w")
+            try
             {
-                inpDay();
+                if (userInput2 == "W" || userInput2 == "w")
+                {
+                    inpDay(Time);
+                }
+                else if (userInput2 == "L" || userInput2 == "l")
+                {
+                    checkList(Time);
+                }
+                else
+                {
+                    throw new ArgumentException();
+                }
             }
-            else if (userInput2 == "L" || userInput2 == "l")
+            catch (ArgumentException ex)
             {
-                checkList();
+                Console.WriteLine($"Incorrect input, please enter a valid value. Error: ' {ex.Message} ' ");
             }
-
-            return checkInput();
+            
+            return checkInput(Time);
 
         }
-        public static void inpDay()
+        /// <summary>
+        /// Заносим в список.
+        /// </summary>
+        public static void inpDay(DateTime Time)
         {
             Console.Write("Choose day of the week: ");
             string inputDay = Console.ReadLine();
-            switch (inputDay)
+            try
+            {
+                switch (inputDay)
             {
                 case "Monday": case "monday": case "1":
                     Console.Write("Okay, write something: ");
                     string mon1 = Console.ReadLine();
                     taskDayMonday.Add(mon1);
-                    Console.WriteLine("I am add your task in list");
+                    Console.Clear();                    
+                    Console.WriteLine($"I am add your task in list at that time: {Time} ");
                     break;
                 case "Tuesday": case "tuesday": case "2":
                     Console.Write("Okay, write something: ");
                     string tue1 = Console.ReadLine();
                     taskDayTuesday.Add(tue1);
-                    Console.WriteLine("I am add your task in list");
+                    Console.Clear();
+                    Console.WriteLine($"I am add your task in list at that time: {Time} ");
                     break;
                 case "Wednesday": case "wednesday": case "3":
                     Console.Write("Okay, write something: ");
                     string wed1 = Console.ReadLine();
                     taskDayWednesday.Add(wed1);
-                    Console.WriteLine("I am add your task in list");
+                    Console.Clear();
+                    Console.WriteLine($"I am add your task in list at that time: {Time} ");
                     break;
                 case "Thursday": case "thursday": case "4":
                     Console.Write("Okay, write something: ");
                     string thu1 = Console.ReadLine();
                     taskDayThursday.Add(thu1);
-                    Console.WriteLine("I am add your task in list");
+                    Console.Clear();
+                    Console.WriteLine($"I am add your task in list at that time: {Time} ");
                     break;
                 case "Friday": case "friday": case "5":
                     Console.Write("Okay, write something: ");
                     string fri1 = Console.ReadLine();
                     taskDayFriday.Add(fri1);
-                    Console.WriteLine("I am add your task in list");
+                    Console.Clear();
+                    Console.WriteLine($"I am add your task in list at that time: {Time} ");
                     break;
                 case "Saturday": case "saturday": case "6":
                     Console.Write("Okay, write something: ");
                     string sat1 = Console.ReadLine();
                     taskDaySaturday.Add(sat1);
-                    Console.WriteLine("I am add your task in list");
+                    Console.Clear();
+                    Console.WriteLine($"I am add your task in list at that time: {Time} ");
                     break;
                 case "Sunday": case "sunday": case "7":
                     Console.Write("Okay, write something: ");
                     string sun1 = Console.ReadLine();
                     taskDaySunday.Add(sun1);
-                    Console.WriteLine("I am add your task in list");
+                    Console.Clear();
+                    Console.WriteLine($"I am add your task in list iat that time: {Time} ");
                     break;
+                default:
+                    throw new ArgumentException();
+                
+            }
+                
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Incorrect input, please enter a valid value. Error: ' {ex.Message} ' ");
             }
         }
-        public static void checkList()
+      /// <summary>
+      /// Проверка списка.
+      /// </summary>
+      /// <param name="Time"></param>
+        public static void checkList(DateTime Time)
         {
             Console.Write("Choose day of the week: ");
             string inputDay2 = Console.ReadLine();
-            switch (inputDay2)
+            Console.Clear();
+            Console.WriteLine($"Now time: {Time}");
+            try
+            {
+                switch (inputDay2)
             {
                 case "Monday": case "monday": case "1":
                     for (int i = 0; i < taskDayMonday.Count; i++)
                     {
                         Console.WriteLine($"You choose {daysOfWeek.Monday}");
-                        Console.WriteLine(taskDayMonday[i]);
+                        Console.WriteLine(taskDayMonday[i]);    
                     }
                     break;
                 case "Tuesday":case "tuesday": case"2":
@@ -160,9 +209,14 @@ namespace WeekOrganizer
                         Console.WriteLine(taskDaySunday[i]);
                     }
                     break;
+                default:
+                    throw new ArgumentException();
             }
-            
-            
+            }   
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine($"Incorrect input, please enter a valid value. Error: ' {ex.Message} ' ");
+            }
         }
     }
 }
