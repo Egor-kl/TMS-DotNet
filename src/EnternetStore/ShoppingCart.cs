@@ -5,19 +5,20 @@ namespace EnternetMagazine
 {
     internal class ShoppingCart : Product
     {
-        internal static List<string> ShoppingCartUser = new List<string>();
+        internal List<string> ShoppingCartUser = new List<string>();
+
         public virtual void ShoppingMethod(List<string> ShoppingCartUser)
         {
             Console.WriteLine("Что вы хотите купить из этого списка?");
+
             for (var i = 0; i < ProductName.Count; i++)
             {
                 Console.WriteLine($"Наименование товара, цена: {ProductName[i]}, {ProductPrice[i]}");
             }
+
             string UserInput = Console.ReadLine();
             ShoppingCartUser.Add(UserInput);
-
         }
-         
     }
     class Discount : ShoppingCart
     {
@@ -41,7 +42,5 @@ namespace EnternetMagazine
                 Console.WriteLine($"С вас {sum}");
             }
         }
-        
-    }      
+    }
 }
-

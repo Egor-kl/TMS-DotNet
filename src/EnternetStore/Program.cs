@@ -3,34 +3,35 @@ using System.Collections.Generic;
 
 namespace EnternetMagazine
 {
-
     class Program
     {
         public static void Main(string[] args)
         {
-            List<string> ProductName = new List<string>();
-            List<double> ProductPrice = new List<double>();
-            List<double> ProductWeight = new List<double>();
-            List<string> ShoppingCartUser = new List<string>();
-            var Prod = new Product();
-            var ShopCart = new ShoppingCart();
-            var Disc = new Discount();
-            Product.ProductName = ProductName;
-            Product.ProductPrice = ProductPrice;
-            Product.ProductWeight = ProductWeight;
+            var productName = new List<string>();
+            var productPrice = new List<double>();
+            var productWeight = new List<double>();
+            var shoppingCartUser = new List<string>();
 
-            Console.WriteLine("Привет, если что-то хочешь добавить в магазин, то нажми 'S' ");
+            var shopCart = new ShoppingCart();
+            var disc = new Discount();
+
+            var product = new Product();
+            product.ProductName = productName;
+            product.ProductPrice = productPrice;
+            product.ProductWeight = productWeight;
+
+            Console.WriteLine("Привет, если что-то хочешь добавить в магазин, то нажми 'S'");
+
             string userInput = Console.ReadLine().ToLower();
+
             if (userInput == "s")
             {
-                Prod.SomeMethod(ProductName, ProductPrice, ProductWeight);
+                // TODO: rename method
+                product.SomeMethod(productName, productPrice, productWeight);
             }
-            ShopCart.ShoppingMethod(ShoppingCartUser);
-            Disc.ShoppingMethod(ShoppingCartUser);
+
+            shopCart.ShoppingMethod(shoppingCartUser);
+            disc.ShoppingMethod(shoppingCartUser);
         }
-        
-        
-        
-        
     }
 }
