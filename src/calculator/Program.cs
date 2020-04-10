@@ -37,7 +37,10 @@ namespace calculator
                     result = Convert.ToString(Product(numberOne, numberTwo));
                     break;
             }
+
             Console.WriteLine("Result: "+ result);
+
+            Console.ReadKey();
         }
         static double Summ(double numberOne, double numberTwo) => numberOne + numberTwo;
         static double Difference(double numberOne, double numberTwo) => numberOne - numberTwo;

@@ -10,13 +10,20 @@ namespace SimpleATM
             {
                 var account = new Account(1000);
                 Console.WriteLine("Hello, choose operation:\n1.Account balance\n2.Reffil\n3.Cash withdrawal\n4.Donation");
-                string UserInput = Console.ReadLine();
-                switch (UserInput)
+
+                // UNDONE: TryParse
+                string userInput = Console.ReadLine();
+
+                switch (userInput)
                 {
                     case "1":
-                        account.ShowMoney += Display;
-                        account.AccountBalance();
+                        {
+                            account.ShowMoney += Display;
+                            account.AccountBalance();
+                        }
                         break;
+
+                    // UNDONE: fix it
                     case "2":
                         account.ShowMoney += Display;
                         account.Refill();
