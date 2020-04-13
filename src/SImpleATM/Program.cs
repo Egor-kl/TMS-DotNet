@@ -11,36 +11,44 @@ namespace SimpleATM
                 var account = new Account(1000);
                 Console.WriteLine("Hello, choose operation:\n1.Account balance\n2.Reffil\n3.Cash withdrawal\n4.Donation");
 
-                // UNDONE: do-while
                 while (true)
                 {
-                    // UNDONE: TryParse and some message
-                    string userInput = Console.ReadLine();
+                    var userInput = decimal.Parse(Console.ReadLine());
 
                     switch (userInput)
                     {
-                        case "1":
+                        case 1:
                             {
                                 account.ShowMoney += Display;
                                 account.AccountBalance();
+                                Console.WriteLine("Choose next operation: \n1.Account balance\n2.Reffil\n3.Cash withdrawal\n4.Donation");
                             }
                             break;
-
-                        // UNDONE: fix it
-                        case "2":
-                            account.ShowMoney += Display;
-                            account.Refill();
+                        case 2:
+                            {
+                                account.ShowMoney += Display;
+                                account.Refill();
+                                Console.WriteLine("Choose next operation: \n1.Account balance\n2.Reffil\n3.Cash withdrawal\n4.Donation");
+                            }
                             break;
-                        case "3":
-                            account.ShowMoney += Display;
-                            account.CashWithdrawall();
+                        case 3:
+                            {
+                                account.ShowMoney += Display;
+                                account.CashWithdrawall();
+                                Console.WriteLine("Choose next operation: \n1.Account balance\n2.Reffil\n3.Cash withdrawal\n4.Donation");
+                            }
                             break;
-                        case "4":
-                            account.ShowMoney += Display;
-                            account.Donation();
+                        case 4:
+                            {
+                                account.ShowMoney += Display;
+                                account.Donation();
+                                Console.WriteLine("Choose next operation: \n1.Account balance\n2.Reffil\n3.Cash withdrawal\n4.Donation");
+                            }
                             break;
                         default:
-                            throw new ArgumentException();
+                            {
+                                throw new ArgumentException();
+                            }
                     }
                 }
             }

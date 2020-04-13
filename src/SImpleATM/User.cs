@@ -78,28 +78,23 @@ namespace SimpleATM
             decimal userInputMoney = decimal.Parse(Console.ReadLine());
             Console.WriteLine($"Where do you want to donate your money?");
 
-            // UNDONE: change it to LINQ
             foreach (var item in DonationPlaces)
             {
                 Console.WriteLine(item);
             }
 
             var userInput = int.Parse(Console.ReadLine());
-            
-            // UNDONE: change to switch
-            if (userInput == 1)
+            decimal sum = _money - userInputMoney;
+            switch (userInput)
             {
-                decimal sum = _money - userInputMoney;
-                ShowMoney?.Invoke($"Thank you for donation in medicine, now in your account {sum} y.e.");
-            }
-            else if (userInput == 2)
-            {
-                decimal sum = _money - userInputMoney;
-                ShowMoney?.Invoke($"Thank you for donation in education, now in your account {sum} y.e.");
-            }
-            else
-            {
-                throw new ArgumentException();
+                case 1:
+                    ShowMoney?.Invoke($"Thank you for donation in medicine, now in your account {sum} y.e.");
+                    break;
+                case 2:
+                    ShowMoney?.Invoke($"Thank you for donation in education, now in your account {sum} y.e.");
+                    break;
+                default:
+                    throw new ArgumentException();
             }
         }
     }
