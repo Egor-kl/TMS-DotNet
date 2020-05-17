@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
-using MailKit.Net.Smtp;
-using MimeKit;
 
 namespace EmailApp.BL
 {
@@ -27,7 +24,7 @@ namespace EmailApp.BL
             Console.WriteLine("Введите текст сообщения: ");
             message.Body = Console.ReadLine();
 
-            using (var client = new System.Net.Mail.SmtpClient(Constants.GMAIL_HOST))
+            using (var client = new SmtpClient(Constants.GMAIL_HOST))
             {
                 client.Credentials = new NetworkCredential(Constants.MESSAGE_SENDER_ADDRESS, Constants.EMAIL_PASSWORD);
                 client.Port = 587;
