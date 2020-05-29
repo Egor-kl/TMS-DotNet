@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\EmailApp\EmailApp.BL\EmailApp.BL.csproj" />
+    <ProjectReference Include="..\..\src\EmailApp\EmailApp.BL\EmailApp.BL.csproj" />
   </ItemGroup>
 
 </Project>
