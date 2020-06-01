@@ -2,7 +2,7 @@
 
 namespace calculator
 {
-    class Program
+    public class Calculator
     {
         static string result;
         static void Main(string[] args)
@@ -42,14 +42,14 @@ namespace calculator
 
             Console.ReadKey();
         }
-        static double Summ(double numberOne, double numberTwo) => numberOne + numberTwo;
-        static double Difference(double numberOne, double numberTwo) => numberOne - numberTwo;
-        static double Division(double numberOne, double numberTwo)
+        public static double Summ(double numberOne, double numberTwo) => numberOne + numberTwo;
+        public static double Difference(double numberOne, double numberTwo) => numberOne - numberTwo;
+        public static double Division(double numberOne, double numberTwo)
         {
             if (numberTwo == 0)
                Console.WriteLine("Division on zero");
             return numberOne / numberTwo;
         }
-        static double Product(double numberOne, double numberTwo) => numberOne * numberTwo;
+        public static double Product(double numberOne, double numberTwo) => numberOne * numberTwo;
     }
 }

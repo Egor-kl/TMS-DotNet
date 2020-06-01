@@ -2,7 +2,7 @@
 
 namespace SimpleATM
 {
-    class Program
+    public class ATM
     {
         static void Main(string[] args)
         {
